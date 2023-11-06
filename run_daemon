@@ -1,0 +1,14 @@
+#!/bin/sh
+#Path to config and auth files of yandexdisk on host
+PATH_TO_CONFIG="/volume1/Docker/YandexDisk/config"
+#Path to sync folder of yandexdisk on host
+PATH_TO_SYNC_FOLDER="/volume2/yandexdisk"
+sudo docker run -d \
+           --cpus=".5" \
+           --memory="6g" \
+           --memory-swap="8g" \
+           --name yandex.disk \
+           --restart unless-stopped \
+           --volume $PATH_TO_CONFIG:/root/.config/yandex-disk \
+           --volume $PATH_TO_SYNC_FOLDER:/root/Yandex.Disk \
+           yandex.disk
